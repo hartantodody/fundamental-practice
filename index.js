@@ -100,3 +100,89 @@ console.log('   - z: ' + checkVowel(z));
 // 10 ==============================================================
 const array1 = [1, 2, 4, 2, 5, 1];
 const array2 = [2, 5, 7, 3, 5, 8];
+// RANDOM PRACTICE
+console.log(`                                                                        `);
+console.log(`<================= This is random practice of mine! ===================>`);
+// SORTING ALGORITHM ==============================================================================
+// 1. MERGE SORT
+const sortThisArray = [15, 7, -6, 2, -4, 3, 9, 8, 1, 10, -5, -3];
+const bubbleSort = (input) => {
+    let swap;
+    do {
+        swap = false;
+        for (let i = 0; i < input.length - 1; i++) {
+            if (input[i] > input[i + 1]) {
+                [input[i], input[i + 1]] = [input[i + 1], input[i]];
+                swap = true;
+            }
+        }
+    } while (swap);
+    return input;
+};
+console.log(`BUBBLE SORT`);
+console.log(`- Bubble sort input : ${sortThisArray}`);
+console.log(`- Bubble sort result : ${bubbleSort([...sortThisArray])}`);
+// COUNTING =================================================================
+// FIBONACCI SEQUENCE
+const initialNum = [1, 2];
+const maxNum = 30;
+const fibonacciSeq = (input, max) => {
+    let container = input;
+    let sum = 0;
+    let sumEven = 0;
+    for (let i = 2; i <= max; i++) {
+        const add = input[i - 2] + input[i - 1];
+        container.push(add);
+    }
+    for (let i = 0; i < container.length; i++) {
+        sum += container[i];
+    }
+    for (let i = 0; i < container.length; i++) {
+        if (container[i] % 2 === 0) {
+            sumEven += container[i];
+            if (sumEven >= 4000000) {
+                break;
+            }
+        }
+    }
+    return { container, sum, sumEven };
+};
+console.log(`FIBONACCI SEQUENCE`);
+console.log(`- Fibonacci Sequence inputs : ${initialNum} and max sequence ${maxNum}`);
+console.log(`- Fibonacci Sequence result : ${fibonacciSeq(initialNum, maxNum).container}`);
+console.log(`- Fibonacci Sequence total sum : ${fibonacciSeq(initialNum, maxNum).sum}`);
+console.log(`- Fibonacci Sequence total sum even numbers: ${fibonacciSeq(initialNum, maxNum).sumEven}`);
+const sumEvenFibonacci = (max) => {
+    let a = 1;
+    let b = 2;
+    let sum = 0;
+    while (a <= max) {
+        if (a % 2 === 0) {
+            sum += a;
+        }
+        const temp = a + b;
+        a = b;
+        b = temp;
+    }
+    return sum;
+};
+const max = 4000000;
+console.log(`Sum of even-valued terms in the Fibonacci sequence below ${max} is: ${sumEvenFibonacci(max)}`);
+// SUM MULTIPLES OF 3 OR 5 BELOW 1000
+let container = [];
+const sumOfMultiples = () => {
+    const val = 3;
+    const val2 = 5;
+    const max = 1000;
+    let sum = 0;
+    for (let i = 1; i < max; i++) {
+        if (i % val === 0 || i % val2 === 0) {
+            sum += i;
+            container.push(i);
+        }
+    }
+    return { sum, container };
+};
+// console.log(`SUM MULTIPLES OF 3 OR 5 BELOW 1000`)
+// console.log(`- All numbers : ${sumOfMultiples().container}`)
+// console.log(`- The total of those number : ${sumOfMultiples().sum}`)
